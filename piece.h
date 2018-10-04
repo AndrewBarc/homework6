@@ -20,7 +20,12 @@ public:
 			theColor = white;
 		}
 	}
-
+	/**
+	* A normal constant member taking no arguments and returning
+	* a bool value.
+	* If true is returned, theColor variable is equal to blank.
+	* @return the boolean value of theColor.
+	*/
 	bool is_blank()const {return theColor == blank;}
 	bool is_black()const {return theColor == black;}
 	bool is_white()const {return theColor == white;}

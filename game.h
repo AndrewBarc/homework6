@@ -58,7 +58,11 @@ protected:
 	// (these must be provided for each derived class)
 	// Return a pointer to a copy of myself:
 	virtual game* clone( ) const = 0;
-	// Compute all the moves that the next player can make:
+	/**
+	* A virtual void member taking one argument and returning nothing.
+	* Compute all the moves that the next player can make.
+	* @param moves is a pass by reference string argument.
+	*/
 	virtual void compute_moves(std::queue<std::string>& moves) const = 0;
 	// Display the status of the current game:
 	virtual void display_status( ) const = 0;

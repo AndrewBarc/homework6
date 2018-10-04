@@ -47,7 +47,11 @@ void Othello::display_status()const
   }
   cout << "\nEnter a move in the format(letter,number) (Ex: A3)" << endl;
 }
-
+/**
+* A normal member taking one argument and returning nothing.
+* moves the othello piece on the "board".
+* @param a constant, pass by reference, string argument.
+*/
 void Othello::make_move(const string& move) {
 
   int c, r;

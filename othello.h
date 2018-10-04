@@ -18,7 +18,11 @@ class Othello: public game {
 public:
 
 	Othello() {}
-
+	/**
+	* A public member taking no arguments and returning
+	* nothing.
+	* Creates the game board in terminal.
+	*/
 	void display_status()const;
 	int evaluate()const;
 	bool is_game_over()const;

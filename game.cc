@@ -16,11 +16,13 @@ namespace main_savitch_14
 
 //*************************************************************************
 // PUBLIC MEMBER FUNCTIONS
-
+/**
+* A public member function taking no arguments and returning a game::who variable.
+* The play function should not be overridden. It plays one round of the
+* game, with the human player moving first and the computer second.
+* @return the winner of the game (or NEUTRAL for a tie).
+*/
 game::who game::play( )
-// The play function should not be overridden. It plays one round of the
-// game, with the human player moving first and the computer second.
-// The return value is the winner of the game (or NEUTRAL for a tie).
 {
 	restart( );
 
@@ -44,12 +46,18 @@ game::who game::play( )
 
 //*************************************************************************
 // OPTIONAL VIRTUAL FUNCTIONS (overriding these functions is optional)
-
+/**
+* A virtual,constant member taking one argument and displaying a message.
+* @param message is a pass by reference constant string argument.
+*/
 void game::display_message(const string& message) const
 {
 	cout << message;
 }
-
+/**
+* A virtual, constant member taking no argument and returning a string value.
+* @return The player's move choice
+*/
 string game::get_user_move( ) const
 {
 	string answer;
@@ -59,7 +67,10 @@ string game::get_user_move( ) const
 	getline(cin, answer);
 	return answer;
 }
-
+/**
+* A virtual, constant member taking no argument and returning a member value.
+* @return The current turn
+*/
 game::who game::winning()const {
 
 	int value = evaluate();
@@ -76,14 +87,18 @@ game::who game::winning()const {
 
 //*************************************************************************
 // PRIVATE FUNCTIONS (these are the same for every game)
-
+/**
+* A normal member taking two arguments and returning an integer value.
+* Evaluate a board position with lookahead.
+* --int look_aheads:  How deep the lookahead should go to evaluate the move.
+* --int beat_this: Value of another move that we're considering. If the
+* current board position can't beat this, then cut it short.
+* The return value is large if the position is good for the player who just
+* moved.
+* @param look_ahead is an integer argument
+* @param beat_this is an integer argument
+*/
 int game::eval_with_lookahead(int look_ahead, int beat_this)
-// Evaluate a board position with lookahead.
-// --int look_aheads:  How deep the lookahead should go to evaluate the move.
-// --int beat_this: Value of another move that we're considering. If the
-// current board position can't beat this, then cut it short.
-// The return value is large if the position is good for the player who just
-// moved.
 {
 	queue<string> moves;   // All possible opponent moves
 	int value;             // Value of a board position after opponent moves
@@ -124,7 +139,11 @@ int game::eval_with_lookahead(int look_ahead, int beat_this)
 	// The answer we return should be from player's perspective, so multiply times -1:
 	return -best_value;
 }
-
+/**
+* A normalmember taking no arguments and returns no value.
+* Generates multiple moves a computer can make and selects the best one.
+* @see make_move(best_move)
+*/
 void game::make_computer_move( )
 {
 	queue<string> moves;
@@ -157,7 +176,12 @@ void game::make_computer_move( )
 	// Make the best move.
 	make_move(best_move);
 }
-
+/**
+* A normal member taking no arguments and returning no value.
+* Gets user's move selection and verifies if move is legal using
+* is_legal function.
+* @see is_legal
+*/
 void game::make_human_move( ) {
 	string move;
 

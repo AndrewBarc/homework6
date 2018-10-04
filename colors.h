@@ -23,7 +23,10 @@
 //  just wanted to use to make everything look nice
 //
 //***********************************************************
-
+/**
+* This file is used for its color shortcuts to make it easier to implement them
+* into the code for the project.
+*/
 #ifndef COLORS_H
 #define COLORS_H
 

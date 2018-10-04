@@ -1,6 +1,6 @@
 .PHONY: all archive build clean
 CC=g++
-all: build archive
+all: build doc
 	
 game: main.o othello.o game.o piece.h colors.h
 	$(CC) main.o othello.o game.o -o game
@@ -16,8 +16,12 @@ game.o: game.cc game.h
 
 clean:
 	rm *.o game
+	rm -r html latex
 
 build: game
 
 archive:
 	tar cvzf game.tgz ~/HW5/Sample_student_project/
+
+doc: Doxyfile
+	doxygen Doxyfile
